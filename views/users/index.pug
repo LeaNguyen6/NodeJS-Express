@@ -1,0 +1,8 @@
+h1 List user
+form(action="/users/search", method="get")
+    input(type="text", name="q", value=q)
+    button(type="submit") Search
+ul
+    each item in users
+        li=item.name
+a(href="/users/create") Add new user
