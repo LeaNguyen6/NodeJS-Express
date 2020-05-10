@@ -1,11 +1,13 @@
-h1 List user
-form(action="/users/search", method="get")
-    input(type="text", name="q", value=q)
-    button(type="submit") Search
-ul
-    each item in users
-        li=item.name +`   `
-            a(href='/users/'+item.id) View
-            span  
-            a(href='/users/'+item.id+'/del') Delete
-a(href="/users/create") Add new user
+extends ../layout/header.pug
+block header
+    h1 List user
+    form(action="/users/search", method="get")
+        input(type="text", name="q", value=q)
+        button(type="submit") Search
+    ul
+        each item in users
+            li=item.name +`   `
+                a(href='/users/'+item.id) View
+                span  
+                a(href='/users/'+item.id+'/del') Delete
+    a(href="/users/create") Add new user

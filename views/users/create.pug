@@ -1,6 +1,8 @@
-form(action="/users/create", method="post")
-    label(for="") Name
-    input(type="text", name="name")
-    label(for="") Phone
-    input(type="text", name="phone")
-    button(type="submit") Create
+extends ../layout/header.pug
+block header
+    form(action="/users/create", method="post")
+        label(for="") Name
+        input(type="text", name="name")
+        label(for="") Phone
+        input(type="text", name="phone")
+        button(type="submit") Create
