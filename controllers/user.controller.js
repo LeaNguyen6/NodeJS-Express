@@ -25,6 +25,16 @@ module.exports.viewUser=(req, res) => {
     })
 }
 module.exports.create=(req, res) => {
+    let errs=[]
+    if (!req.body.name){errs.push('Name is required')}
+    if (!req.body.phone){errs.push('Phone is required')}
+    if (errs.length) {
+        res.render('users/create',{
+            errs,
+            value:req.body
+        })
+        return;
+    }
     req.body.id = shortid.generate();
     db.get('users').push(req.body).write()
     res.redirect('/users')

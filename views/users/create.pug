@@ -1,8 +1,11 @@
 extends ../layout/header.pug
 block header
+    if errs
+        each err in errs
+            .alert.alert-danger #{err}
     form(action="/users/create", method="post")
         label(for="") Name
-        input(type="text", name="name")
+        input(type="text", name="name" , value=value ?value.name: '')
         label(for="") Phone
-        input(type="text", name="phone")
+        input(type="text", name="phone", value=value ?value.phone: '')
         button(type="submit") Create
