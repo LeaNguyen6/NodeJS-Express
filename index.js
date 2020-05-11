@@ -9,6 +9,8 @@ const userRouter=require('./routes/user.router')
 //2 - Template engines
 app.set('view engine', 'pug')
 app.set('views', './views')
+//11 - Static files
+app.use(express.static('public'))
 //4 - POST method , bodyParser để đọc req.body
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
