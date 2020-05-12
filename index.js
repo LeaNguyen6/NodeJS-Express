@@ -1,10 +1,11 @@
 const bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
 
 const express = require('express')
 const app = express()
 const port = 3000
 
-const userRouter=require('./routes/user.router')
+const userRouter = require('./routes/user.router')
 
 //2 - Template engines
 app.set('view engine', 'pug')
@@ -15,9 +16,30 @@ app.use(express.static('public'))
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use('/users',userRouter)
+app.use(cookieParser())
 
-app.get('/', (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
+app.use('/users',countCookie, userRouter)
+let count;
+app.get('/', countCookie, setCookie, (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
 
+function setCookie(req, res, next) {
+    console.log(req.cookies)
+    if (req.cookies){
+        res.cookie('user-id', 124)
+        count = 0
+        console.log(req.cookies,count)
+    }
+    else {
+       console.log(false) 
+    }
+    next()
+}
+function countCookie(req, res, next) {
+    if (count !== undefined) {
+        count++
+        console.log(req.cookies, count)
+    }
+    next()
+}
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
