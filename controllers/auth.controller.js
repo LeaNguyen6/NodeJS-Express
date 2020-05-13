@@ -1,12 +1,14 @@
 const db=require('../db')
 const shortid = require('shortid');
+const md5 = require('md5');
+
 
 module.exports.login= (req, res) => {
     res.render('auth/login')
 }
 module.exports.postLogin=(req, res) => {
     let email=req.body.email;
-    let pass=req.body.pass;
+    let pass=md5(req.body.pass);
     let user = db.get('users').find({ email }).value()
     let errs=[]
     if (!user){

@@ -1,36 +1,25 @@
 {
   "users": [
     {
-      "name": "fdsfsd",
-      "phone": "",
-      "id": "3P1r6WDMj"
-    },
-    {
-      "name": "vvdxvd",
-      "phone": "",
-      "id": "ovnVKr6hR"
-    },
-    {
-      "name": "vdv",
-      "phone": "vdv",
-      "id": "uxon_bOZ9"
-    },
-    {
-      "name": "fdbf",
-      "phone": "",
-      "id": "XJiW1JHAV"
-    },
-    {
-      "name": "vvds",
-      "phone": "vvds",
-      "id": "x7o2zw-hI"
-    },
-    {
-      "name": "đvv",
-      "phone": "sds",
+      "name": "q",
+      "phone": "s",
       "email": "abc@12.12",
-      "pass": "123",
-      "id": "_9248rJL4"
+      "pass": "202cb962ac59075b964b07152d234b70",
+      "id": "F4SeTJzOf"
+    },
+    {
+      "name": "1",
+      "phone": "1",
+      "email": "1@1.com",
+      "pass": "c4ca4238a0b923820dcc509a6f75849b",
+      "id": "STQBMAXA7"
+    },
+    {
+      "name": "ad",
+      "phone": "1",
+      "email": "admin@1.1",
+      "pass": "c4ca4238a0b923820dcc509a6f75849b",
+      "id": "LxEmD-xOw"
     }
   ]
 }

@@ -1,5 +1,6 @@
-const db=require('../db')
+const md5=require('md5')
 const shortid = require('shortid');
+const db=require('../db')
 
 module.exports.index= (req, res) => {
     res.render('users/index', {
@@ -26,6 +27,7 @@ module.exports.viewUser=(req, res) => {
 }
 module.exports.create=(req, res) => {
     req.body.id = shortid.generate();
+    req.body.pass=md5(req.body.pass)
     db.get('users').push(req.body).write()
     res.redirect('/users')
 }

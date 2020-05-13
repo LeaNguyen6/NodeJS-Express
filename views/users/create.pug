@@ -8,4 +8,8 @@ block header
         input(type="text", name="name" , value=value ?value.name: '')
         label(for="") Phone
         input(type="text", name="phone", value=value ?value.phone: '')
+        label(for='user') Email
+        input#user(type='text', name='email', required='',value= value?value.email:'')
+        label(for='password') Password
+        input#password(type='password', name='pass', required='')
         button(type="submit") Create
