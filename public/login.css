@@ -1,0 +1,79 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    
+}
+
+.wrap {
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-shadow: 0.2px 0.2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.wrap h2 {
+    user-select: none;
+    /*Không cho ng dùng chọn*/
+}
+
+.wrap button {
+    width: 100%;
+    padding: 0.6rem 0;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #08AEEA;
+    background-image: linear-gradient(266deg, #08AEEA 0%, #2AF598 100%);
+    margin: 1rem 0;
+}
+.wrap button:hover{
+    outline: none;
+}
+.wrap p{
+    margin: 2rem 0 ;
+    font-size: 15.5px;
+}
+.wrap>.block-input {
+    position: relative;
+    margin: 1.5rem 0;
+}
+.wrap p a{
+    color: inherit;
+    font-weight: 600;
+}
+.block-input input {
+    border: none;
+    border-bottom: 1px solid rgb(12, 196, 196);
+    width: 100%;
+    padding: 8px 0;
+    outline: none;
+
+}
+
+.block-input>label {
+    position: absolute;
+    font-size: smaller;
+    color: rgb(100, 99, 99);
+    top: 4px;
+    left: 4px;
+    transition: 200ms ease;
+    pointer-events: none;
+    /*Không cho dùng thao tác chuột nào*/
+}
+
+/*Bắt sự kiện khi focus và khi input valid=> để có valid thì phải thêm required, nếu không khi nhập xong label lại xuống dòng*/
+.block-input input:focus+label,
+.block-input input:valid+label {
+    top: -12px;
+    left: 0;
+    color: rgb(12, 196, 196);
+    font-size: 13px;
+    text-shadow: 0.2px 0.2px 1.5px rgba(0, 0, 0, 0.2);
+}

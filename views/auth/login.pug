@@ -1,0 +1,19 @@
+extends ../layout/header.pug
+block header
+    if errs
+            each err in errs
+                .alert.alert-danger #{err}
+    div.login-container
+        
+        form.wrap(action='/auth/login',, method="post")
+            h2.title Welcome
+            .block-input
+                input#user(type='text', name='email', required='',value= value?value.email:'')
+                label(for='user') Email
+            .block-input
+                input#password(type='password', name='pass', required='')
+                label(for='password') Password
+            button(type='submit') Login
+            p
+                | Don&apos;t have an account? 
+                a(href='') Sign Up

@@ -6,6 +6,8 @@ const app = express()
 const port = 3000
 
 const userRouter = require('./routes/user.router')
+const authRouter = require('./routes/auth.router')
+const authMiddlewears=require('./middlerwears/auth.middlerwear')
 
 //2 - Template engines
 app.set('view engine', 'pug')
@@ -18,14 +20,15 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 app.use(cookieParser())
 
-app.use('/users',countCookie, userRouter)
+app.use('/users',countCookie,authMiddlewears.requireAuth, userRouter)
+app.use('/auth', authRouter)
 let count;
 app.get('/', countCookie, setCookie, (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
 
 function setCookie(req, res, next) {
     console.log(req.cookies)
-    if (req.cookies){
-        res.cookie('user-id', 124)
+    if (req.cookies.userID){
+        res.cookie('userId', 124)
         count = 0
         console.log(req.cookies,count)
     }
