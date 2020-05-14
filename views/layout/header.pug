@@ -17,6 +17,9 @@ html
               span.sr-only (current)
           li.nav-item
             a.nav-link(href='/users') List users
-      a.nav-link(href='/auth/login') Login
+      if account
+        p=account.name
+      else
+        a.nav-link(href='/auth/login') Login
     div.container
       block header
