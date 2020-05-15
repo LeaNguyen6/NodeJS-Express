@@ -1,0 +1,51 @@
+extends ../layout/header.pug
+block header
+    nav(aria-label='breadcrumb')
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href='#') Home
+            li.breadcrumb-item.active(aria-current='page') Library
+    nav(aria-label='Page navigation example')
+        -var first=1
+        -var now=page>2 ?(page==pageNum ? pageNum-1 :page) : 2
+        -var back=page<2 ? 1 :(page==pageNum? pageNum-2 : page-1) 
+        -var next=page<2 ? 3 :(page<pageNum ? page+1 : pageNum ) 
+
+            ul#pagination.pagination(data-page=page)
+                li.page-item
+                    a.page-link(href='books?page='+first, aria-label='Previous')
+                        span(aria-hidden='true') &laquo;
+                li.page-item
+                    a#back.page-link(href='books?page='+back)=back
+                li.page-item
+                    a#now.page-link(href='books?page='+now)=now
+                li.page-item
+                    a#next.page-link(href='books?page='+next)=next
+                li.page-item
+                    a.page-link(href='books?page='+pageNum, aria-label='Next')
+                        span(aria-hidden='true') &raquo;
+    .row
+        each book in books
+            .col-sm-6.col-md-4.col-lg-3.d-flex
+                .card(style='width: 17rem;')
+                    div.card-img
+                        img.card-img-top(src=book.image, alt='...')
+                    .card-body
+                        h5.card-title=book.title
+                        p.card-text=book.description
+                        a.btn.btn-primary(href='#') Add
+    script.
+        let pagination = document.getElementById('pagination');
+        let back = document.getElementById('back');
+        let now = document.getElementById('now');
+        let next = document.getElementById('next');
+        let pages=[back,now,next]
+        let page=pagination.dataset.page
+        console.log(page, now.innerHTML)
+        for (var item of pages){
+            if (item.innerHTML==page){
+                item.classList.add("page-active");
+            } else item.classList.remove("page-active")
+        }
+
+

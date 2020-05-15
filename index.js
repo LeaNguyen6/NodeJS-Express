@@ -3,10 +3,11 @@ const bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 const express = require('express')
 const app = express()
-const port = 9195
+const port = 9196
 
 const userRouter = require('./routes/user.router')
 const authRouter = require('./routes/auth.router')
+const bookRouter = require('./routes/books.router')
 const authMiddlewears = require('./middlerwears/auth.middlerwear')
 
 //2 - Template engines
@@ -21,10 +22,12 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.use(cookieParser(process.env.SESSION_SECRET))
 
 app.use('/users', countCookie, authMiddlewears.requireAuth, userRouter)
+app.use('/books', authMiddlewears.requireAuth, bookRouter)
+
 app.use('/auth', authRouter)
 let count;
-app.get('/', countCookie, setCookie, authMiddlewears.requireAuth, 
-(req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
+app.get('/', countCookie, setCookie, authMiddlewears.requireAuth,
+    (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
 
 
 
