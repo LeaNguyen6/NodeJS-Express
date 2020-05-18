@@ -3,7 +3,7 @@ block header
     if errs
         each err in errs
             .alert.alert-danger #{err}
-    form(action="/users/create", method="post")
+    form(action="/users/create", method="post",enctype="multipart/form-data" )
         label(for="") Name
         input(type="text", name="name" , value=value ?value.name: '')
         label(for="") Phone
@@ -12,6 +12,7 @@ block header
         input#user(type='text', name='email', required='',value= value?value.email:'')
         label(for='password') Password
         input#password(type='password', name='pass', required='')
+        input.form-control-file(type='file',name='avatar')
         button(type="submit") Create
 
 
