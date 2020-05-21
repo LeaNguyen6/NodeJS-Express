@@ -11,6 +11,9 @@ const userRouter = require('./routes/user.router')
 const authRouter = require('./routes/auth.router')
 const bookRouter = require('./routes/books.router')
 const authMiddlewears = require('./middlerwears/auth.middlerwear')
+const sessionMiddlewears = require('./middlerwears/session.middlerwear')
+const cartRouter = require('./routes/cart.router')
+
 
 //2 - Template engines
 app.set('view engine', 'pug')
@@ -22,13 +25,15 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.use(cookieParser(process.env.SESSION_SECRET))
-
+app.use(sessionMiddlewears) // app use ntn sẽ tác động đến tất cả các đường dẫn
 app.use('/users', countCookie, authMiddlewears.requireAuth, userRouter)
-app.use('/books', authMiddlewears.requireAuth, bookRouter)
+app.use('/books',bookRouter)
 
 app.use('/auth', authRouter)
+app.use('/cart',cartRouter)
+
 let count;
-app.get('/', countCookie, setCookie, authMiddlewears.requireAuth,
+app.get('/', countCookie, setCookie,
     (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
 
 

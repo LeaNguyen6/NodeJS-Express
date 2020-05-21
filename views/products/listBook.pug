@@ -33,7 +33,7 @@ block header
                     .card-body
                         h5.card-title=book.title
                         p.card-text=book.description
-                        a.btn.btn-primary(href='#') Add
+                        a.btn.btn-primary(href='/cart/add/'+book.id) Add
     script.
         let pagination = document.getElementById('pagination');
         let back = document.getElementById('back');

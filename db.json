@@ -364,5 +364,17 @@
       "description": "fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis",
       "image": "http://dummyimage.com/162x206.jpg/ff4444/ffffff"
     }
+  ],
+  "sessions": [
+    {
+      "id": "829YRWPyF",
+      "cart": {
+        ":61da3f55-2e9f-4273-9814-a859ca4bd943": 1,
+        ":3105f2c1-24c6-4dfb-bbc4-52593f2be633": 2,
+        "cff517ed-ce05-4a07-acfd-bec1155934f2": 4,
+        "528c6afb-92f0-419d-8404-38f62100887c": 1,
+        "05f99235-7d6c-4c14-92a8-89a379986c42": 1
+      }
+    }
   ]
 }

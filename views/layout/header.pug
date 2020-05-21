@@ -19,9 +19,16 @@ html
             a.nav-link(href='/users') List users
           li.nav-item
             a.nav-link(href='/books') List books
+          li.nav-item
+            a.nav-link(href='#') Cart (#{ncart})
       if account
-        p=account.name
+        p=account.name 
+          a(onClick='out()' href='/') / Log out
       else
-        a.nav-link(href='/auth/login') Login
+        a.nav-link(href='/auth/login') Login 
     div.container
-      block header
+    script.
+      function out(){
+        document.cookie="userID="
+      }
+    block header
