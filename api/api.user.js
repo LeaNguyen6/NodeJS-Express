@@ -21,6 +21,4 @@ router.get('/sessions', async (req,res)=>{
 })
 //router.post('/login', controller.postLogin)
 
-
-
 module.exports=router

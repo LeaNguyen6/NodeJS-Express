@@ -7,7 +7,6 @@ var sessionsSchema = new Schema({
   cart: [{
     bookId:{type:Schema.Types.ObjectId,ref: "Books" } ,
     qtt: { type: Number, default: 0 },
-
   }]
 });
 

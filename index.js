@@ -2,7 +2,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const express = require('express')
@@ -29,17 +29,27 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.use(cookieParser(process.env.SESSION_SECRET))
-app.use(sessionMiddlewears) // app use ntn sẽ tác động đến tất cả các đường dẫn
+//app.use(sessionMiddlewears) // app use ntn sẽ tác động đến tất cả các đường dẫn
 app.use('/users', countCookie, authMiddlewears.requireAuth, userRouter)
-app.use('/books',bookRouter)
+app.use('/books', bookRouter)
 
 app.use('/auth', authRouter)
-app.use('/cart',cartRouter)
+app.use('/cart', cartRouter)
 
-app.use('/api',apiRouter)
+app.use('/api', apiRouter)
 let count;
 app.get('/', countCookie, setCookie,
-    (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))
+    (req, res) => {
+        try{
+            var a; 
+            a.b();  
+          }
+          catch(error){
+            res.render('error',{error});
+          }
+        res.render('index', { title: 'Hey', message: 'Hello there!' })
+    }
+)
 
 
 
