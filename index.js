@@ -1,11 +1,15 @@
 require('dotenv').config()
 const bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true});
 
 
 const express = require('express')
 const app = express()
 const port = 9196
+
+const apiRouter = require('./api/api.user')
 
 const userRouter = require('./routes/user.router')
 const authRouter = require('./routes/auth.router')
@@ -32,6 +36,7 @@ app.use('/books',bookRouter)
 app.use('/auth', authRouter)
 app.use('/cart',cartRouter)
 
+app.use('/api',apiRouter)
 let count;
 app.get('/', countCookie, setCookie,
     (req, res) => res.render('index', { title: 'Hey', message: 'Hello there!' }))

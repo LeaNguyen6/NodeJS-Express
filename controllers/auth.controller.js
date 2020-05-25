@@ -1,4 +1,6 @@
-const db=require('../db')
+//const db=require('../db')
+const Users=require('../model/users.model')
+
 const shortid = require('shortid');
 const md5 = require('md5');
 
@@ -14,10 +16,12 @@ const msg = {
 module.exports.login= (req, res) => {
     res.render('auth/login')
 }
-module.exports.postLogin=(req, res) => {
+module.exports.postLogin= async (req, res) => {
     let email=req.body.email;
     let pass=md5(req.body.pass);
-    let user = db.get('users').find({ email }).value()
+    //let user = db.get('users').find({ email }).value()
+    let user= await Users.findOne({email})
+   // console.log(user,user.id)
     let errs=[]
     if (!user){
         errs.push('User does not exist')
