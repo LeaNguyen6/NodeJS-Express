@@ -40,13 +40,14 @@ app.use('/api', apiRouter)
 let count;
 app.get('/', countCookie, setCookie,
     (req, res) => {
-        try{
-            var a; 
-            a.b();  
-          }
-          catch(error){
-            res.render('error',{error});
-          }
+        //28 - Error Handling
+        // try{
+        //     var a; 
+        //     a.b();  
+        //   }
+        //   catch(error){
+        //     res.render('error',{error});
+        //   }
         res.render('index', { title: 'Hey', message: 'Hello there!' })
     }
 )
